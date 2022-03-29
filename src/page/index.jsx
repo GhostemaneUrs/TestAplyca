@@ -3,7 +3,7 @@ import Login from "./Login";
 import ToDo from "./ToDo";
 import { Routes, Route } from "react-router-dom";
 
-export const index = () => {
+const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
@@ -11,3 +11,6 @@ export const index = () => {
     </Routes>
   );
 };
+
+export default AppRouter;
+
