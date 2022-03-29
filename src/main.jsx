@@ -1,5 +1,5 @@
 import "./theme/global.scss";
-import App from "./App";
+import App from "./page";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
