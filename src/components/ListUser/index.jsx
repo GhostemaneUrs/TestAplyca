@@ -60,9 +60,6 @@ const ListUser = () => {
                     <span>View all</span>
                   </Link>
                 </td>
-                <td>
-                  <span>delete</span>
-                </td>
               </tr>
             ))}
           </tbody>
