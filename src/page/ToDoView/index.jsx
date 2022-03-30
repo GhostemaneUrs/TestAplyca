@@ -10,7 +10,7 @@ const TodoView = () => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((data) => setPersonsAll(data));
-  });
+  }, [personsAll]);
   return (
     <div className="container-bg-todo">
       <div className="container-sider">

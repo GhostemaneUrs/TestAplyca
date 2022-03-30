@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-
 const ListUser = () => {
   const [person, setPerson] = useState([]);
   const [idPerson, setIdPerson] = useState(1);
@@ -26,6 +25,7 @@ const ListUser = () => {
         console.log(error);
       });
   };
+
   return (
     <div>
       <button className="btn-new-user" onClick={getPerson}>
@@ -57,8 +57,11 @@ const ListUser = () => {
                 <td>{person.company.name}</td>
                 <td>
                   <Link to="/view">
-                    <a>View all</a>
+                    <span>View all</span>
                   </Link>
+                </td>
+                <td>
+                  <span>delete</span>
                 </td>
               </tr>
             ))}
