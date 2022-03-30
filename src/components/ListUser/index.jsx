@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineEllipsis } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const ListUser = () => {
+  const [persons, setPersons] = useState([]);
+  const [idPerson, setIdPerson] = useState(1);
+
+  const getPerson = () => {
+    fetch(`https://jsonplaceholder.typicode.com/users/${idPerson}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (Object.keys(data).length !== 0) {
+          setIdPerson(idPerson + 1);
+          setPersons([...persons, data]);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "No more users can be added at the moment!",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  /* useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users/${id}")
+      .then((response) => response.json())
+      .then((data) => {
+        setPersons(data);
+      });
+  }),
+    [persons]; */
   return (
     <div>
-      <button className="btn-new-user">+ Add new user</button>
+      <button className="btn-new-user" onClick={getPerson}>
+        + Add new user
+      </button>
       <div className="container-table">
         <div className="container-icons">
           <p>Users</p>
@@ -22,16 +56,18 @@ const ListUser = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Lorem ip</td>
-              <td>Lorem ip</td>
-              <td>Lorem ip</td>
-              <td>Lorem ip</td>
-              <td>Lorem ip</td>
-              <td>
-                <a>View todos</a>
-              </td>
-            </tr>
+            {persons.map((person) => (
+              <tr key={person.id}>
+                <td>{person.name}</td>
+                <td>{person.username}</td>
+                <td>{person.email}</td>
+                <td>{person.address.city}</td>
+                <td>{person.company.name}</td>
+                <td>
+                  <a>View todos</a>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
