@@ -26,7 +26,7 @@ const Login = () => {
     <div className="container-bg">
       <div className="container-1400 container">
         <div className="card">
-          <div className="container-img">
+          <div className="container-img-logo">
             <img src={welcome} alt="welcome-img" />
           </div>
           <div className="container-login">
