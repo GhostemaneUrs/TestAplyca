@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
-@import 'sweetalert2/src/sweetalert2.scss';
+@import "sweetalert2/src/sweetalert2.scss";
 
 body {
   font-family: "Roboto", sans-serif;
@@ -198,6 +198,10 @@ body {
   gap: 25px;
   display: flex;
   align-items: center;
+}
+
+.underline {
+  text-decoration: none;
 }
 
 .title-users {

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ListUser = () => {
-  const [persons, setPersons] = useState([]);
+  const [person, setPerson] = useState([]);
   const [idPerson, setIdPerson] = useState(1);
 
   const getPerson = () => {
@@ -12,7 +13,7 @@ const ListUser = () => {
       .then((data) => {
         if (Object.keys(data).length !== 0) {
           setIdPerson(idPerson + 1);
-          setPersons([...persons, data]);
+          setPerson([...person, data]);
         } else {
           Swal.fire({
             icon: "error",
@@ -25,15 +26,6 @@ const ListUser = () => {
         console.log(error);
       });
   };
-
-  /* useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users/${id}")
-      .then((response) => response.json())
-      .then((data) => {
-        setPersons(data);
-      });
-  }),
-    [persons]; */
   return (
     <div>
       <button className="btn-new-user" onClick={getPerson}>
@@ -56,7 +48,7 @@ const ListUser = () => {
             </tr>
           </thead>
           <tbody>
-            {persons.map((person) => (
+            {person.map((person) => (
               <tr key={person.id}>
                 <td>{person.name}</td>
                 <td>{person.username}</td>
@@ -64,7 +56,9 @@ const ListUser = () => {
                 <td>{person.address.city}</td>
                 <td>{person.company.name}</td>
                 <td>
-                  <a>View todos</a>
+                  <Link to="/view">
+                    <a>View all</a>
+                  </Link>
                 </td>
               </tr>
             ))}
